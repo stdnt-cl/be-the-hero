@@ -17,7 +17,7 @@ module.exports = {
          'ongs.whatsapp',
          'ongs.city',
          'ongs.uf'
-      ]);
+      ]);// selecting each field needed from ongs, bcause call all of them will overwrite the commom name
 
       response.header('X-Total-Count', count['count(*)']); // count returns an object with count(*) prop
 
