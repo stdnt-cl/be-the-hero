@@ -16,11 +16,11 @@ export default function Detail() {
 	}
 
 	function sendEmail() {
-		//stopped here
+		//stopped here 1:00:36
 	}
 
 	function sendWhatsapp() {
-		//stopped here
+		//stopped here 1:00:36
 	}
 
 	return (
@@ -32,7 +32,7 @@ export default function Detail() {
 					</TouchableOpacity>
 			</View>
 
-			<View style={style.incident}>
+			<View style={styles.incident}>
 				<Text style={[styles.incidentProperty, { marginTop: 0 }]}>ONG:</Text>
 				<Text style={styles.incidentValue}></Text>
 
@@ -45,16 +45,16 @@ export default function Detail() {
 
 			<View style={styles.contactBox}>
 				<Text style={styles.heroTitle}>Salve o dia!</Text>
-				<Text style={styles.heroTitle}>Seja o herói desse caso.</Text>
+				<Text style={[styles.heroTitle, {fontWeight:'400', fontSize: 16}]}>Seja o herói desse caso.</Text>
 				
 				<Text style={styles.heroDescription}>Entre em contato:</Text>
 
 				<View style={styles.actions}>
-					<TouchableOpacity style={style.actionButton} onPress={()=>{}}>
-						<Text style={style.actionText}>WhatsApp</Text>
+					<TouchableOpacity style={styles.actionButton} onPress={()=>{}}>
+						<Text style={styles.actionText}>WhatsApp</Text>
 					</TouchableOpacity>
-					<TouchableOpacity style={style.actionButton} onPress={()=>{}}>
-						<Text style={style.actionText}>E-mail</Text>
+					<TouchableOpacity style={styles.actionButton} onPress={()=>{}}>
+						<Text style={styles.actionText}>E-mail</Text>
 					</TouchableOpacity>
 				</View>
 

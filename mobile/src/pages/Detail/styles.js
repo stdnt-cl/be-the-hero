@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import Constants from 'expo-constants';
 
 export default StyleSheet.create({
    container:{
@@ -7,9 +8,9 @@ export default StyleSheet.create({
       paddingTop: Constants.statusBarHeight + 20,
    },
    header: { 
-      flexDireaction: 'row',
+      flexDirection: 'row',
       justifyContent:'space-between',
-      alignItems: center,
+      alignItems: 'center',
    },
    incident: {
       padding: 24,
@@ -42,27 +43,26 @@ export default StyleSheet.create({
       lineHeight: 30
    },
    heroDescription: {
+      marginTop: 4,
       fontSize: 15,
       color: '#737380'
    },
    actions: {
       marginTop: 16,
       flexDirection: 'row',
-      justifyContent: 'space-between'; 
+      justifyContent: 'space-between',
    },
-   action: {
+   actionButton: {
       backgroundColor: '#E02041',
       borderRadius: 8,
       height: 50,
       width: '48%',
       justifyContent: 'center',
-      'alignItems': 'center'
+      alignItems: 'center'
    },
    actionText: {
       color: '#FFF',
       fontSize: 15,
       fontWeight: 'bold',
    },
-   
-
 });

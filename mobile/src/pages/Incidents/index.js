@@ -9,8 +9,7 @@ import styles from './styles';
 export default function Incidents() {
 	const navigation = useNavigation(); // similar to useHistory() in web version
 
-	function navigateToDetail(incident) {
-		console.log(incident);
+	function navigateToDetail() {
 		navigation.navigate('Detail');
 	}
 	return (
