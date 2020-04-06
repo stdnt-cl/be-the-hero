@@ -1,10 +1,10 @@
 {
-  "name": "Omnistack12-backend",
+  "name": "backend-be-the-hero",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
     "start": "nodemon src/server",
-    "test": "cross-env NODE_ENV=test jest"
+    "test": "cross-env NODE_ENV=test jest --runInBand"
   },
   "author": "Pudou_JGSG",
   "license": "MIT",
