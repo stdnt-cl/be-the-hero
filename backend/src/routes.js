@@ -6,7 +6,7 @@ const IncidentsController = require('./controllers/IncidentsController');
 const ProfileController = require('./controllers/ProfileController');
 const SessionController = require('./controllers/SessionController');
 
-const routes = express.Router()
+const routes = express.Router();
 
 // 1) _Login Route
 routes.post('/sessions', celebrate({
@@ -26,7 +26,7 @@ routes.post('/ongs', celebrate({
       uf: Joi.string().required().length(2)
 
    })
-}), OngController.create);
+}, { abortEarly: false }), OngController.create);
 
 // 3) _Incidents listing when already looged in a Ong Profile
 routes.get('/profile', celebrate({
@@ -51,7 +51,7 @@ routes.post('/incidents', celebrate({
       description: Joi.string().required().min(9).max(320),
       value: Joi.number(),
    })
-}), IncidentsController.create);
+}, { abortEarly: false }), IncidentsController.create);
 
 routes.delete('/incidents/:id', celebrate({
    [Segments.PARAMS]: Joi.object().keys({

@@ -27,15 +27,15 @@ export default function NewIncident() {
       }
 
       try {
-         api.post('incidents', data, {
+         const response = await api.post('incidents', data, {
             headers: {
                authorization: ongId
             }
          })
-
-         history.push('/profile');
+         console.log(response.error)
+         history.push('/profile')
       } catch(error) {
-
+			throw new error();
       }
    }
    return (

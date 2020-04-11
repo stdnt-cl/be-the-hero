@@ -11,11 +11,12 @@ import logoImg from '../../assets/logo.svg';
 
 function Logon() {
    const [ id, setId ] = useState('');
+   const [ validationErrors, setValidationErrors ] = useState('');
    const history = useHistory();
 
    async function handleLogin(event) {
       event.preventDefault();
-      
+
       try {
          const response = await api.post('sessions', { id });
          localStorage.setItem('ongId', id);
@@ -24,9 +25,8 @@ function Logon() {
          history.push('/profile');
 
       } catch (error) {
-         
          alert('Falha no login, o ID não existe ou não foi recebido no servidor!');
-         console.error(error);
+         setValidationErrors(error.response.data.message);
       }
    }
 
@@ -39,10 +39,15 @@ function Logon() {
                <h1>Faça seu logon</h1>
                
                <input
-                  placeholder="Sua ID"
+                  placeholder="Seu ID"
                   value={id}
                   onChange={event => setId(event.target.value)}
                />
+               <p
+                  className='validation-errors'
+                  children={validationErrors ? validationErrors : ''}
+               />
+
                <button className="button" type="submit">Entrar</button>
             
                <Link className="link" to="/register">
