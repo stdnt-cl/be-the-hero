@@ -13,7 +13,7 @@ routes.post('/sessions', celebrate({
    [Segments.BODY]: Joi.object().keys({
       id: Joi.string().required().length(8),//crypto.randomBytes(4).toString('HEX').length is always 8 [@ Ong Controller]
    })
-}), SessionController.create);
+}, {language:{string: 'id invalido cacete'}}), SessionController.create);
 
 // 2) _Ongs routes, first to list all registered ongs, second to Sign Up in case of not registered yet
 routes.get('/ongs', OngController.index);
