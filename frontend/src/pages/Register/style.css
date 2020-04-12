@@ -54,4 +54,16 @@
    margin-left: 9px;
 }
 
+.city-uf-validation-errors {
+   display: flex;
+   justify-content: space-between;
+}
+
+.city-uf-validation-errors .uf-validation-message {
+   width: 18%;
+   font-size: 10px;
+   line-height: 12px;
+}
+
+
 

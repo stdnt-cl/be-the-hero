@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
+import { filteringValidationArray, getCurrentValidationMessage} from '../../utils/validationUtils';
 
 import api from '../../services/api';
 import './style.css';
@@ -38,23 +39,9 @@ export default function Register() {
          alert(`Erro no cadastro, tente novamente`);
 			setValidationErrors(error.response.data);
 
-			console.log(validationErrors, '\n', error.response.data.validation.keys);
 			setMessage(error.response.data.message);
 		}
 	}
-
-	function filtering(fieldName) {
-		return validationErrors.validation.keys.filter(field => field === fieldName);
-	}
-
-	function getCurrentMessage(fieldName) {
-		const messageArray = message.split('. ');
-		const currentIndex = validationErrors.validation.keys.indexOf(fieldName);
-
-		return messageArray[currentIndex];
-	}
-
-
 
 //joi is only returning one error, need to set it to return more, check here: https://stackoverflow.com/questions/25953973/joi-validation-return-only-one-error-message
 
@@ -81,7 +68,10 @@ export default function Register() {
 					/>
 					<p
 						className='validation-errors'
-						children={!!validationErrors && (filtering('name')[0] === 'name') ? getCurrentMessage('name') : '' }
+						children={
+							!!validationErrors && (filteringValidationArray('name', validationErrors) === 'name') ?
+							getCurrentValidationMessage('name', message, validationErrors) : ''
+						}
 					/>
 
 					<input
@@ -92,7 +82,10 @@ export default function Register() {
 					/>
 					<p
 						className='validation-errors'
-						children={!!validationErrors && filtering('email')[0] === 'email' ? getCurrentMessage('email') : '' }
+						children={
+							!!validationErrors && (filteringValidationArray('email', validationErrors) === 'email') ?
+							getCurrentValidationMessage('email', message, validationErrors) : ''
+						}
 					/>
 
 					<input
@@ -102,7 +95,10 @@ export default function Register() {
 					/>
 					<p
 						className='validation-errors'
-						children={!!validationErrors && filtering('whatsapp')[0] === 'whatsapp' ? getCurrentMessage('whatsapp') : '' }
+						children={
+							!!validationErrors && (filteringValidationArray('whatsapp', validationErrors) === 'whatsapp') ?
+							getCurrentValidationMessage('whatsapp', message, validationErrors) : ''
+						}
 					/>
 
 					<div className="city-uf-input-group">
@@ -118,16 +114,24 @@ export default function Register() {
 							value={uf}
 							onChange={event => setUf(event.target.value)}
 						/>
-					<p
-						className='validation-errors'
-						children={!!validationErrors && filtering('uf')[0] === 'uf' ? getCurrentMessage('uf') : '' }
-					/>
 					</div>
+					<div className='city-uf-validation-errors'>
+						<p
+							className='validation-errors'
+							children={
+								!!validationErrors && (filteringValidationArray('city', validationErrors) === 'city') ?
+								getCurrentValidationMessage('city', message, validationErrors) : ''
+							}
+						/>
 
-					<p
-						className='validation-errors'
-						children={!!validationErrors && filtering('city')[0] === 'city' ? getCurrentMessage('city') : '' }
-					/>
+						<p
+							className='validation-errors uf-validation-message'
+							children={
+								!!validationErrors && (filteringValidationArray('uf', validationErrors) === 'uf') ?
+								getCurrentValidationMessage('uf', message, validationErrors) : ''
+							}
+						/>
+					</div>
                <button className="button" type="submit">Cadastrar</button>
             </form>
          </div>
